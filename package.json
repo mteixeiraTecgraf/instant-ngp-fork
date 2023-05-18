@@ -1,0 +1,26 @@
+{
+  "name": "instant-ngp",
+  "version": "1.0.0",
+  "description": "<img src=\"docs/assets_readme/fox.gif\" height=\"342\"/> <img src=\"docs/assets_readme/robot5.gif\" height=\"342\"/>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docker:build:image": "sudo docker build -t instantngp .",
+    "docker:run:console": "sudo docker run --gpus all -v $PWD:/src -w /src -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD/cache:/home/appuser/.cache -it instantngp bash",
+    "dbi": "npm run docker:build:image",
+    "drc": "npm run docker:run:console",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NVlabs/instant-ngp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NVlabs/instant-ngp/issues"
+  },
+  "homepage": "https://github.com/NVlabs/instant-ngp#readme"
+}
