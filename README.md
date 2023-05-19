@@ -1,4 +1,67 @@
+# Fork InstantNGP-INF2474 TOP. CIENCIA DE DADOS 
+
+Para Executar uma sequencia em um video novo 
+
+ - Gerar a Imagem Docker
+ - Rodar o container instantNGP
+ - Gerar Frames e Poses a partir de video
+ - Visualizar o Resultado no InstantNGP
+
+ ## Gerar a Imagem Docker
+
+ Para gerar a Imagem Docker, execute a seguinte sequencia
+
+```sh
+instant-ngp$ ./docker build -t instantngp .
+```
+
+ Se tiver o npm instalado na sua maquina, execue o comando abaixo:
+
+Ambiente Linux ou WSL:
+```sh
+instant-ngp$ ./npm run bdi
+```
+Ambiente Windows:
+```sh
+instant-ngp$ ./npm run bdiw
+```
+ ## Rodar o container instantNGP
+
+ Para rodar o container gerado, execute o seguinte comando
+
+Ambiente windows
+```sh
+instant-ngp$ ./docker run --gpus all -v %CD%:/src -w /src -v %CD%/cache:/home/appuser/.cache -it instantngp bash
+```
+Ambiente Linux
+```sh
+instant-ngp$ ./docker run --gpus all -v $PWD:/src -w /src -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD/cache:/home/appuser/.cache -it instantngp bash
+```
+
+Da mesma forma, se tiver o npm instalado na sua maquina, execue o comando abaixo:
+
+Ambiente Linux ou WSL:
+```sh
+instant-ngp$ ./npm run drc
+```
+Ambiente Windows:
+```sh
+instant-ngp$ ./npm run drcw
+```
+
+## Gerar Frames e Poses a partir de video
+
+```sh
+instant-ngp$ ./python3 scripts/colmap2nerf.py --video_in PATH_TO_VIDEO --video_fps 2 --run_colmap --aabb_scale 32 --out PATH_TO_OUTPUT_FOLDER/transforms.json
+```
+## Visualizar o Resultado no InstantNGP
+
+```bash
+instant-ngp$ ./instant-ngp PATH_TO_OUTPUT_FOLDER
+```
+
 # Instant Neural Graphics Primitives ![](https://github.com/NVlabs/instant-ngp/workflows/CI/badge.svg)
+
 
 <img src="docs/assets_readme/fox.gif" height="342"/> <img src="docs/assets_readme/robot5.gif" height="342"/>
 
