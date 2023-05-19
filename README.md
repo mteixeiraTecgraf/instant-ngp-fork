@@ -32,10 +32,12 @@ instant-ngp$ ./npm run bdiw
 Ambiente windows
 ```sh
 instant-ngp$ ./docker run --gpus all -v %CD%:/src -w /src -v %CD%/cache:/home/appuser/.cache -it instantngp bash
+appuser@/src$ pip3 install --upgrade pip && pip3 install -r requirements.txt
 ```
 Ambiente Linux
 ```sh
 instant-ngp$ ./docker run --gpus all -v $PWD:/src -w /src -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD/cache:/home/appuser/.cache -it instantngp bash
+appuser@/src$ pip3 install --upgrade pip && pip3 install -r requirements.txt
 ```
 
 Da mesma forma, se tiver o npm instalado na sua maquina, execue o comando abaixo:
@@ -43,21 +45,23 @@ Da mesma forma, se tiver o npm instalado na sua maquina, execue o comando abaixo
 Ambiente Linux ou WSL:
 ```sh
 instant-ngp$ ./npm run drc
+appuser@/src$ pip3 install --upgrade pip && pip3 install -r requirements.txt
 ```
 Ambiente Windows:
 ```sh
 instant-ngp$ ./npm run drcw
+appuser@/src$ pip3 install --upgrade pip && pip3 install -r requirements.txt
 ```
 
 ## Gerar Frames e Poses a partir de video
 
 ```sh
-instant-ngp$ ./python3 scripts/colmap2nerf.py --video_in PATH_TO_VIDEO --video_fps 2 --run_colmap --aabb_scale 32 --out PATH_TO_OUTPUT_FOLDER/transforms.json
+appuser@/src$ ./python3 scripts/colmap2nerf.py --video_in PATH_TO_VIDEO --video_fps 2 --run_colmap --aabb_scale 32 --out PATH_TO_OUTPUT_FOLDER/transforms.json
 ```
 ## Visualizar o Resultado no InstantNGP
 
 ```bash
-instant-ngp$ ./instant-ngp PATH_TO_OUTPUT_FOLDER
+instant-ngp$ ./instant-ngp.exe PATH_TO_OUTPUT_FOLDER
 ```
 
 # Instant Neural Graphics Primitives ![](https://github.com/NVlabs/instant-ngp/workflows/CI/badge.svg)
