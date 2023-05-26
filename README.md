@@ -1,5 +1,42 @@
-# Fork InstantNGP-INF2474 TOP. CIENCIA DE DADOS 
+# Fork InstantNGP
 
+ ## Compilar usando imagem precompilada 
+
+Para compilar com a nova imagem, Execute os passos a seguir:
+
+Baixe os Submodulos do Projeto
+```sh
+git submodule update --init --recursive
+```
+
+Rodar a imagem de desenvolvimento montando a pasta atual
+```sh
+docker run \
+    -it \
+    --gpus all \
+    --name instant-ngp \
+    -e NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics \
+    -e DISPLAY=$DISPLAY \
+    -v $PWD:/volume \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -w /volume \
+    marcobteixeira/instantngp:cuda10.2-u18.04
+
+```
+
+Compile o projeto com o cmake
+```sh
+cmake  ./ -B ./build
+cmake --build build --config RelWithDebInfo -j 16
+```
+
+Rodando a sequencia a seguir, com o exemplo a seguir
+
+```sh
+./instant-ngp data/nerf/fox/
+```
+
+ ## Gerar uma sequencia de video
 Para Executar uma sequencia em um video novo 
 
  - Gerar a Imagem Docker
