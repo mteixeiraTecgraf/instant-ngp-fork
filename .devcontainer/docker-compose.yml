@@ -2,10 +2,14 @@ version: "3.8"
 
 services:
   instant-ngp:
-    image: instantngp:latest
+    image: marcobteixeira/instantngp:cuda10.2-u18.04
     build:
       context: ..
-      dockerfile: ./.devcontainer/Dockerfile
+      dockerfile: ./.devcontainer/Dockerfile-v2.dockerfile
+    #image: instantngp:fix
+    #build:
+    #  context: ..
+    #  dockerfile: ./.devcontainer/Dockerfile-p2.dockerfile
     stdin_open: true
     tty: true
     environment:
